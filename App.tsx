@@ -1,25 +1,40 @@
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View,Image } from 'react-native'
+import React, { Component } from 'react'
+import { ScrollView, View, StyleSheet } from 'react-native'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={{uri:'https://www.bpesquet.fr/images/ENSC.jpg'}}/>
-      <Image style={styles.image} source={{uri:'https://www.bpesquet.fr/images/ENSC.jpg'}}/>
-      <Image style={styles.image} source={{uri:'https://www.bpesquet.fr/images/ENSC.jpg'}}/>
-    </View>
-  )
+export default class App extends Component {
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        <View style={[styles.box, styles.boxLarge]} />
+        <ScrollView horizontal>
+          <View style={[styles.box, styles.boxSmall]} />
+          <View style={[styles.box, styles.boxSmall]} />
+          <View style={[styles.box, styles.boxSmall]} />
+        </ScrollView>
+        <View style={[styles.box, styles.boxLarge]} />
+        <View style={[styles.box, styles.boxSmall]} />
+        <View style={[styles.box, styles.boxLarge]} />
+      </ScrollView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'flex-end',
-    justifyContent: 'space-around',
   },
-  image:{
-    height:75,
-    width:108,
-  }
+  box: {
+    marginBottom: 10,
+    marginRight: 10,
+  },
+  boxSmall: {
+    width: 200,
+    height: 200,
+    backgroundColor: 'skyblue',
+  },
+  boxLarge: {
+    width: 300,
+    height: 300,
+    backgroundColor: 'steelblue',
+  },
 })
