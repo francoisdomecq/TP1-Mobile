@@ -1,20 +1,78 @@
 import React, { Component } from 'react'
-import { ScrollView, View, StyleSheet } from 'react-native'
+import { FlatList, View, StyleSheet, Text } from 'react-native'
 
+const DATA = [
+  {
+    id: 0,
+    firstName: 'Benoit',
+  },
+  {
+    id: 1,
+    firstName: 'Bernard',
+  },
+  {
+    id: 2,
+    firstName: 'Jean-Marc A',
+  },
+  {
+    id: 3,
+    firstName: 'Jérôme',
+  },
+  {
+    id: 4,
+    firstName: 'Hervé',
+  },
+  {
+    id: 5,
+    firstName: 'Jean-Marc S',
+  },
+  {
+    id: 6,
+    firstName: 'Pierre Alexandre',
+  },
+  {
+    id: 7,
+    firstName: 'Edwige',
+  },
+  {
+    id: 8,
+    firstName: 'Baptiste',
+  },
+  {
+    id: 9,
+    firstName: 'Coralie',
+  },
+  {
+    id: 10,
+    firstName: 'Jauze',
+  },
+  {
+    id: 11,
+    firstName: 'Véronique',
+  },
+  {
+    id: 12,
+    firstName: 'Elisabeth',
+  },
+  {
+    id: 13,
+    firstName: 'Liliana',
+  },
+]
 export default class App extends Component {
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={[styles.box, styles.boxLarge]} />
-        <ScrollView horizontal>
-          <View style={[styles.box, styles.boxSmall]} />
-          <View style={[styles.box, styles.boxSmall]} />
-          <View style={[styles.box, styles.boxSmall]} />
-        </ScrollView>
-        <View style={[styles.box, styles.boxLarge]} />
-        <View style={[styles.box, styles.boxSmall]} />
-        <View style={[styles.box, styles.boxLarge]} />
-      </ScrollView>
+      <View style={styles.container}>
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => (
+            <View style={styles.item}>
+              <Text style={styles.textFont}>{item.firstName}</Text>
+            </View>
+          )}
+          keyExtractor={(item)=>item.id.toString()}
+        />
+      </View>
     )
   }
 }
@@ -22,19 +80,18 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+    marginTop:20,
+
   },
-  box: {
-    marginBottom: 10,
-    marginRight: 10,
-  },
-  boxSmall: {
-    width: 200,
-    height: 200,
+  item: {
     backgroundColor: 'skyblue',
-  },
-  boxLarge: {
     width: '100%',
-    height: 300,
-    backgroundColor: 'steelblue',
+    marginTop:5,
+    height:30,
+    justifyContent:'center'
   },
+  textFont:{
+    fontSize:18,
+  }
 })
