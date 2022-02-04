@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, View, StyleSheet, Text } from 'react-native'
+import { TextInput, View, StyleSheet, Text } from 'react-native'
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => alert('Good job !')}
-        >
-          <Text style={styles.textFont}>Hit me like you mean it</Text>
-        </TouchableOpacity>
+        <TextInput 
+        style={styles.textInput}
+        placeholder='Saisissez votre prénom'
+        onSubmitEditing={Event=>alert(`Bienvenue, ${Event.nativeEvent.text} `)}
+        />
       </View>
     )
   }
@@ -23,13 +22,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center'
   },
-  button: {
-    padding:20,
-    width: 300,
-    backgroundColor: 'skyblue',
-    alignItems:'center'
-  },
-  textFont:{
-    fontSize:20,
+  textInput:{
+    fontSize:18
   }
+
 })
