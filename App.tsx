@@ -5,8 +5,8 @@ interface CLassStateType {
 }
 
 export default class App extends Component<{},CLassStateType> {
-  constructor() {
-    super({});
+  constructor(public props = {name:String}) {
+    super(props);
     this.state = {
       name:"",
     };
